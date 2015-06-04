@@ -20,6 +20,7 @@ when "debian"
   default[:nginx][:log_dir]    = "/var/log/nginx"
   default[:nginx][:user]       = "www-data"
   default[:nginx][:binary]     = "/usr/sbin/nginx"
+  default[:nginx][:ssl]        = "/etc/nginx/ssl"
   if node[:platform_version] == "14.04"
     default[:nginx][:pid_file] = "/run/nginx.pid"
   else
