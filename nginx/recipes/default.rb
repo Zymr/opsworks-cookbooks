@@ -69,3 +69,14 @@ include_recipe "nginx::service"
 service "nginx" do
   action [ :enable, :start ]
 end
+
+cookbook_file "/etc/nginx/ssl/nginx.crt" do
+        source "nginx.crt"
+        mode "0644"
+end
+
+
+cookbook_file "/etc/nginx/ssl/nginx.pem" do
+        source "nginx.pem"
+        mode "0644"
+end
