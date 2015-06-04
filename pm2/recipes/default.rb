@@ -9,7 +9,7 @@
 PM2_VERSION = node['pm2']['version']
 
 # Install npm
-include_recipe 'pm2::nodejs'
+include_recipe 'pm2::opswork_nodejs'
 
 # Install pm2
 nodejs_npm 'pm2' do
