@@ -6,4 +6,4 @@
 #
 
 # Install nodejs
-include_recipe 'opswork_nodejs'
+include_recipe 'opsworks_nodejs'
