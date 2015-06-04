@@ -1,0 +1,66 @@
+# Aerospike database configuration file.
+
+service {
+	user root
+	group root
+	paxos-single-replica-limit 1 # Number of nodes where the replica count is automatically reduced to 1.
+	pidfile /var/run/aerospike/asd.pid
+	service-threads 4
+	transaction-queues 4
+	transaction-threads-per-queue 4
+	proto-fd-max 15000
+}
+
+logging {
+	# Log file must be an absolute path.
+	file /var/log/aerospike/aerospike.log {
+		context any info
+	}
+}
+
+network {
+	service {
+		address any
+		port 3000
+	}
+
+	heartbeat {
+		mode multicast
+		address 239.1.99.222
+		port 9918
+
+		# To use unicast-mesh heartbeats, remove the 3 lines above, and see
+		# aerospike_mesh.conf for alternative.
+
+		interval 150
+		timeout 10
+	}
+
+	fabric {
+		port 3001
+	}
+
+	info {
+		port 3003
+	}
+}
+
+<% @namespaces.each do |namespace| %>
+namespace <%= namespace[:name] %> {
+  replication-factor <%= namespace.fetch(:replication_factor, 2) %>
+  memory-size <%= namespace.fetch(:memory_size, '4G') %>
+  default-ttl <%= namespace.fetch(:default_ttl, '30d') %>
+
+  <% storage_engine = namespace.fetch(:storage_engine, {}) %>
+  <% if storage_engine[:type] == 'device' %>
+  storage-engine <%= storage_engine[:type] %> {
+    file <%= storage_engine.fetch(:file, "/opt/aerospike/data/#{namespace[:name]}") %>
+    filesize <%= storage_engine.fetch(:filesize, '16G') %>
+    data-in-memory <%= storage_engine.fetch(:data_in_memory, true) %>
+  }
+  <% else %>
+  storage-engine memory
+  <% end %>
+}
+
+<% end %>
