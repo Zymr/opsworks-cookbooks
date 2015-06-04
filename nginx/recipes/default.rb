@@ -70,11 +70,17 @@ service "nginx" do
   action [ :enable, :start ]
 end
 
+directory "/etc/nginx/ssl" do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
+
 cookbook_file "/etc/nginx/ssl/nginx.crt" do
         source "nginx.crt"
         mode "0644"
 end
-
 
 cookbook_file "/etc/nginx/ssl/nginx.pem" do
         source "nginx.pem"
