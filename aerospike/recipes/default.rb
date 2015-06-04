@@ -10,7 +10,7 @@ template node['aerospike']['config_path'] do
 end
 
 service 'aerospike' do
-  supports [:start, :retsart, :status]
+  supports [:start, :status]
   action [:start]
 end
 
