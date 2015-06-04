@@ -79,12 +79,12 @@ end
 
 template "#{node[:nginx][:ssl]}/nginx.crt" do
 #cookbook_file "/etc/nginx/ssl/nginx.crt" do
-        source "nginx.crt"
-        mode "0644"
+  source "nginx.crt"
+  mode "0644"
 end
 
 template "#{node[:nginx][:ssl]}/nginx.pem" do
 #cookbook_file "/etc/nginx/ssl/nginx.pem" do
-        source "nginx.pem"
-        mode "0644"
+  source "nginx.pem"
+  mode "0644"
 end
