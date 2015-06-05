@@ -77,17 +77,17 @@ end
 #   action :create
 # end
 
-template "#{node[:nginx][:dir]}/ssl//nginx.crt" do
-# cookbook_file "/etc/nginx/ssl/nginx.crt" do
-  source "nginx.crt"
+template "#{node[:nginx][:dir]}/ssl/nginx.crt" do
+#cookbook_file "/etc/nginx/ssl/nginx.crt" do
+  source "nginx.crt.erb"
   owner "root"
   group "root"
   mode "0644"
 end
 
-template "#{node[:nginx][:dir]}/ssl//nginx.crt" do
+template "#{node[:nginx][:dir]}/ssl/nginx.crt" do
 #cookbook_file "/etc/nginx/ssl/nginx.pem" do
-  source "nginx.pem"
+  source "nginx.pem.erb"
   owner "root"
   group "root"
   mode "0644"
