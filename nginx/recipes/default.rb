@@ -70,23 +70,23 @@ service "nginx" do
   action [ :enable, :start ]
 end
 
-directory "/etc/nginx/ssl" do
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :create
-end
+# directory "/etc/nginx/ssl" do
+#   owner 'root'
+#   group 'root'
+#   mode '0755'
+#   action :create
+# end
 
-#template "#{node[:nginx][:ssl]}/nginx.crt" do
-cookbook_file "/etc/nginx/ssl/nginx.crt" do
+template "#{node[:nginx][:dir]}/ssl//nginx.crt" do
+# cookbook_file "/etc/nginx/ssl/nginx.crt" do
   source "nginx.crt"
   owner "root"
   group "root"
   mode "0644"
 end
 
-#template "#{node[:nginx][:ssl]}/nginx.pem" do
-cookbook_file "/etc/nginx/ssl/nginx.pem" do
+template "#{node[:nginx][:dir]}/ssl//nginx.crt" do
+#cookbook_file "/etc/nginx/ssl/nginx.pem" do
   source "nginx.pem"
   owner "root"
   group "root"
