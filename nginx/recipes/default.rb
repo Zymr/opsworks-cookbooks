@@ -83,7 +83,7 @@ directory node[:nginx][:ssl] do
   mode '0755'
 end
 
-template "#{node[:nginx][:ssl]}/ssl/nginx.crt" do
+template "#{node[:nginx][:ssl]}/nginx.crt" do
 #cookbook_file "/etc/nginx/ssl/nginx.crt" do
   source "nginx.crt.erb"
   owner "root"
@@ -91,7 +91,7 @@ template "#{node[:nginx][:ssl]}/ssl/nginx.crt" do
   mode "0644"
 end
 
-template "#{node[:nginx][:ssl]}/ssl/nginx.crt" do
+template "#{node[:nginx][:ssl]}/nginx.crt" do
 #cookbook_file "/etc/nginx/ssl/nginx.pem" do
   source "nginx.pem.erb"
   owner "root"
