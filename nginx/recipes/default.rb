@@ -91,7 +91,7 @@ template "#{node[:nginx][:ssl]}/nginx.crt" do
   mode "0644"
 end
 
-template "#{node[:nginx][:ssl]}/nginx.crt" do
+template "#{node[:nginx][:ssl]}/nginx.pem" do
 #cookbook_file "/etc/nginx/ssl/nginx.pem" do
   source "nginx.pem.erb"
   owner "root"
