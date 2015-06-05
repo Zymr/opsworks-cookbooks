@@ -77,7 +77,13 @@ end
 #   action :create
 # end
 
-template "#{node[:nginx][:dir]}/ssl/nginx.crt" do
+directory node[:nginx][:ssl] do
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
+template "#{node[:nginx][:ssl]}/ssl/nginx.crt" do
 #cookbook_file "/etc/nginx/ssl/nginx.crt" do
   source "nginx.crt.erb"
   owner "root"
@@ -85,7 +91,7 @@ template "#{node[:nginx][:dir]}/ssl/nginx.crt" do
   mode "0644"
 end
 
-template "#{node[:nginx][:dir]}/ssl/nginx.crt" do
+template "#{node[:nginx][:ssl]}/ssl/nginx.crt" do
 #cookbook_file "/etc/nginx/ssl/nginx.pem" do
   source "nginx.pem.erb"
   owner "root"
