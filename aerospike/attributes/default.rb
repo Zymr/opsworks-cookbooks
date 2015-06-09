@@ -3,7 +3,7 @@ default['aerospike']['config_path'] = '/etc/aerospike/aerospike.conf'
 
 case node['platform']
 when 'ubuntu'
-  default['aerospike']['tarball_url'] = "://s3-us-west-2.amazonaws.com/canvas-software/aerospike-server-enterprise-3.5.12-ubuntu12.04.tgz"
+  default['aerospike']['tarball_url'] = "https://s3-us-west-2.amazonaws.com/canvas-software/aerospike-server-enterprise-3.5.12-ubuntu12.04.tgz"
   default['aerospike']['checksum'] = '649209a051e7909f85f9136673dffddfcab6ba32ca3c2a1eca6446155dee0eaf'
 when 'debian'
   case node['platform_version']
