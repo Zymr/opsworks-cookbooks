@@ -1,0 +1,46 @@
+{
+  "name": "zeromq",
+  "description": "Installs/Configures zeromq",
+  "long_description": "# <a name=\"title\"></a> zeromq-cookbook [![Build Status](https://api.travis-ci.org/plu/zeromq-cookbook.png)](https://travis-ci.org/plu/zeromq-cookbook)\n# DESCRIPTION\n\nInstalls zeromq.\n\n# REQUIREMENTS\n\n## Platform\n\n* Tested on\n  * Debian 6.0.8\n  * Debian 7.2.0\n  * Ubuntu 10.04\n  * Ubuntu 12.04\n  * CentOS 6.5\n\n## Cookbooks\n\n* apt\n* build-essential\n* yum\n\n# ATTRIBUTES\n\n* zeromq['dir'] = '/usr/local'\n* zeromq['install_method'] = 'source'\n* zeromq['sha256_sum'] = 'df96a141c85b65c2cb6c0db22223126623a09eecbfccb7f74400f3f938742f59'\n* zeromq['src_url'] = 'http://download.zeromq.org'\n* zeromq['version'] = '3.2.5'\n* zeromq['creates'] = 'lib/libzmq.so'\n\nNote: If you want to install a different version than 3.2.5, just\nset the node attribute to the version you want.\n\nIf the `source` installation method is being used, the recipe uses the `creates` attribute\nto be idempotent. If a newer version of zeromq does not create `lib/libzmq.so`\nanymore, you can change this attribute.\n\n# USAGE\n\nInclude the zeromq recipe to install zeromq on your system based on the default installation method:\n\ninclude_recipe 'zeromq'\n\nCurrently the only installation method that is supported is: source\n\n# LICENSE/AUTHOR\n\nAuthor:: Johannes Plunien (plu@pqpq.de)\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "maintainer": "Johannes Plunien",
+  "maintainer_email": "plu@pqpq.de",
+  "license": "Apache 2.0",
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "redhat": ">= 0.0.0"
+  },
+  "dependencies": {
+    "apt": ">= 0.0.0",
+    "yum": ">= 0.0.0",
+    "build-essential": ">= 0.0.0"
+  },
+  "recommendations": {
+
+  },
+  "suggestions": {
+
+  },
+  "conflicting": {
+
+  },
+  "providing": {
+    "zeromq": ">= 0.0.0"
+  },
+  "replacing": {
+
+  },
+  "attributes": {
+
+  },
+  "groupings": {
+
+  },
+  "recipes": {
+    "zeromq": "Installs zeromq based on the default installation method",
+    "zeromq::install_from_package": "Installs zeromq from packages",
+    "zeromq::install_from_source": "Installs zeromq from source"
+  },
+  "version": "1.0.6"
+}
