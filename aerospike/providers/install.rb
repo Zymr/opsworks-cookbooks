@@ -9,13 +9,13 @@ action :run do
 end
 
 def download
-  #Chef::Log.info("Downloading Aerospike from #{new_resource.tarball_url}")
+  Chef::Log.info("Downloading Aerospike from #{new_resource.tarball_url}")
   #Chef::Log.info("Downloading Aerospike from http://www.aerospike.com/artifacts/aerospike-server-community/3.5.9/aerospike-server-community-3.5.9-ubuntu12.04.tgz")
-  Chef::Log.info("Downloading Aerospike from https://s3-us-west-2.amazonaws.com/canvas-software/aerospike-server-enterprise-3.5.12-ubuntu12.04.tgz")
+  #Chef::Log.info("Downloading Aerospike from https://s3-us-west-2.amazonaws.com/canvas-software/aerospike-server-enterprise-3.5.12-ubuntu12.04.tgz")
   remote_file download_path do
-    #source new_resource.tarball_url
+    source new_resource.tarball_url
     #source "http://www.aerospike.com/artifacts/aerospike-server-community/3.5.9/aerospike-server-community-3.5.9-ubuntu12.04.tgz"
-    source "https://s3-us-west-2.amazonaws.com/canvas-software/aerospike-server-enterprise-3.5.12-ubuntu12.04.tgz"
+    #source "https://s3-us-west-2.amazonaws.com/canvas-software/aerospike-server-enterprise-3.5.12-ubuntu12.04.tgz"
     checksum new_resource.checksum
   end
 end
