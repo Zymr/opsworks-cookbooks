@@ -45,22 +45,24 @@ network {
 	}
 }
 
-<% @namespaces.each do |namespace| %>
-namespace <%= namespace[:name] %> {
-  replication-factor <%= namespace.fetch(:replication_factor, 2) %>
-  memory-size <%= namespace.fetch(:memory_size, '4G') %>
-  default-ttl <%= namespace.fetch(:default_ttl, '30d') %>
+namespace cdbapplication {
+    replication-factor 1
+    memory-size 20G
+    default-ttl 0  # 30 days, use 0 to never expire/evict.
 
-  <% storage_engine = namespace.fetch(:storage_engine, {}) %>
-  <% if storage_engine[:type] == 'device' %>
-  storage-engine <%= storage_engine[:type] %> {
-    file <%= storage_engine.fetch(:file, "/opt/aerospike/data/#{namespace[:name]}") %>
-    filesize <%= storage_engine.fetch(:filesize, '16G') %>
-    data-in-memory <%= storage_engine.fetch(:data_in_memory, true) %>
-  }
-  <% else %>
-  storage-engine memory
-  <% end %>
+    storage-engine device {
+        device /dev/xvdi
+        data-in-memory true # Store data in memory in addition to file.
+    }
 }
 
-<% end %>
+namespace cdbcontent {
+    replication-factor 1
+    memory-size 8G
+    default-ttl 0
+
+    storage-engine device {
+        device /dev/xvdj
+        data-in-memory false
+    }
+}

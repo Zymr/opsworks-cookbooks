@@ -1,0 +1,78 @@
+---
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+  customize:
+    memory: 256
+    cpus: 2
+platforms:
+- name: debian-6.0.8
+  driver_config:
+    box: opscode-debian-6.0.8
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-6.0.8_chef-provisionerless.box
+  run_list:
+  - recipe[apt]
+- name: debian-7.2.0
+  driver_config:
+    box: opscode-debian-7.2.0
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.2.0_chef-provisionerless.box
+  run_list:
+  - recipe[apt]
+- name: ubuntu-12.04
+  driver_config:
+    box: opscode-ubuntu-12.04
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box
+  run_list:
+  - recipe[apt]
+- name: ubuntu-10.04
+  driver_config:
+    box: opscode-ubuntu-10.04
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-10.04_chef-provisionerless.box
+  run_list:
+  - recipe[apt]
+- name: centos-6.5
+  driver_config:
+    box: opscode-centos-6.5
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
+suites:
+- name: source_v2
+  run_list:
+    - recipe[zeromq]
+  attributes:
+    zeromq:
+      version: 2.2.0
+      sha256_sum: 43904aeb9ea6844f72ca02e4e53bf1d481a1a0264e64979da761464e88604637
+- name: source_v3
+  run_list:
+  - recipe[zeromq]
+  attributes:
+    zeromq:
+      version: 3.2.5
+      sha256_sum: 09653e56a466683edb2f87ee025c4de55b8740df69481b9d7da98748f0c92124
+- name: source_v4
+  run_list:
+    - recipe[zeromq]
+  attributes:
+    zeromq:
+      version: 4.0.5
+      sha256_sum: 3bc93c5f67370341428364ce007d448f4bb58a0eaabd0a60697d8086bc43342b
+- name: source_v41rc1
+  run_list:
+    - recipe[zeromq]
+  attributes:
+    zeromq:
+      version: 4.1.0-rc1
+      sha256_sum: e8e6325abe2ede0a9fb3d1abbe425d8a7911f6ac283652ee49b36afbb0164d60
+- name: source_custom_dir
+  run_list:
+  - recipe[zeromq]
+  attributes:
+    zeromq:
+      dir: /opt/zeromq
+- name: package
+  run_list:
+    - recipe[zeromq]
+  attributes:
+    zeromq:
+      install_method: package
+  excludes: ["centos-6.5", "debian-6.0.8", "ubuntu-10.04"]

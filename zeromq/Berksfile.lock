@@ -1,0 +1,7 @@
+DEPENDENCIES
+  zeromq
+    path: .
+    metadata: true
+
+GRAPH
+  zeromq (1.0.6)

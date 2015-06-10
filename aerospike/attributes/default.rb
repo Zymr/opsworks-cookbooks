@@ -3,8 +3,8 @@ default['aerospike']['config_path'] = '/etc/aerospike/aerospike.conf'
 
 case node['platform']
 when 'ubuntu'
-  default['aerospike']['tarball_url'] = "http://aerospike.com/download/server/#{node['aerospike']['version']}/artifact/ubuntu12"
-  default['aerospike']['checksum'] = '29b5e592349811738269a2b79b578b723942c0ef2682b2c514fbdda6df9ba621'
+  default['aerospike']['tarball_url'] = "https://s3-us-west-2.amazonaws.com/canvas-software/aerospike-server-enterprise-3.5.12-ubuntu12.04.tgz"
+  default['aerospike']['checksum'] = '649209a051e7909f85f9136673dffddfcab6ba32ca3c2a1eca6446155dee0eaf'
 when 'debian'
   case node['platform_version']
   when '6'
@@ -25,4 +25,4 @@ end
 
 default['aerospike']['base_name'] = 'aerospike-'
 default['aerospike']['artifact_type'] = 'tgz'
-default['aerospike']['namespaces'] = [{ name: 'test' }, { name: 'bar' }]
+default['aerospike']['namespaces'] = [{ name: 'cdbapplication' }, { name: 'cdbcontent' }]
