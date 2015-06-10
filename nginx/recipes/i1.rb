@@ -58,7 +58,7 @@ template "nginx.conf" do
 end
 
 template "#{node[:nginx][:dir]}/sites-available/default" do
-  source "i2-site.erb"
+  source "i1-site.erb"
   owner "root"
   group "root"
   mode 0644
