@@ -10,10 +10,6 @@ provides         'zeromq'
 recipe 'zeromq', 'Installs zeromq based on the default installation method'
 recipe 'zeromq::install_from_source', 'Installs zeromq from source'
 
-%w(build-essential).each do |cookbook|
-  depends cookbook
-end
-
 %w(debian ubuntu centos redhat).each do |os|
   supports os
 end

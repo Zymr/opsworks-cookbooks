@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe 'build-essential'
-
 case node['platform_family']
 when 'rhel', 'fedora'
   package 'openssl-devel'
