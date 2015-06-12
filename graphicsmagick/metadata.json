@@ -1,0 +1,34 @@
+{
+  "name": "graphicsmagick",
+  "description": "Installs graphicsmagick",
+  "long_description": "# GraphicsMagick [![Build Status](https://secure.travis-ci.org/gregf/cookbook-graphicsmagick.png)](http://travis-ci.org/gregf/cookbook-graphicsmagick)\n\n## Description\n\nInstalls and configures a [GraphicsMagick](http://www.graphicsmagick.org/).\n\n* Opscode Community Site: http://community.opscode.com/cookbooks/graphicsmagick\n* Source Code: http://github.com/gregf/cookbook-graphicsmagick\n\n## Requirements\n\n### Chef\n\nTested on chef 11\n\n### Platforms\n\n* Debian 7+\n* Ubuntu 13+\n* Centos 6.4+\n* Fedora 19+\n\n## Recipes\n\n### default\n\nInstalls the GraphicsMagick package\n\n### devel\n\nInstalls the development files and includes the default recipe.\n\n##Contributing\n\n1. Fork it\n2. Create your feature branch (git checkout -b my-new-feature)\n3. Commit your changes (git commit -am 'Added some feature')\n4. Push to the branch (git push origin my-new-feature)\n5. Create new Pull Request\n\n##License\n\nAuthor: Greg Fitzgerald <greg@gregf.org>  \n\nCopyright 2014, Greg Fitzgerald.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "maintainer": "Greg Fitzgerald",
+  "maintainer_email": "greg@gregf.org",
+  "license": "Apache 2.0",
+  "platforms": {
+    "debian": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "fedora": ">= 0.0.0"
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "graphicsmagick": "Installs graphicsmagick."
+  },
+  "version": "0.1.0"
+}
