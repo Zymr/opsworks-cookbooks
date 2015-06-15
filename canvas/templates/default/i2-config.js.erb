@@ -1,0 +1,62 @@
+var config = {
+    allowedOrigins: [
+        '*',
+        'localhost:8081',
+        'http://canvasdemo.azurewebsites.net'
+    ],
+    secrets: {
+        session: 'c@nv@$s3c73t'
+    },
+    aws:{
+        accessKeyId:'AKIAIWT2VJZFSU6AL5JA',
+        secretAccessKey: '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'
+    },
+    facebook: {
+        // clientID:     process.env.FACEBOOK_ID || '1589744891300215',
+        // clientSecret: process.env.FACEBOOK_SECRET || '4206ae621ca96a8751f3c9c15e2672d4',
+        clientID:     process.env.FACEBOOK_ID || '1589744891300215',
+        clientSecret: process.env.FACEBOOK_SECRET || 'dabdaaca9b41cc569f0d7f24e11ec10f',
+        callbackURL:  (process.env.DOMAIN || '') + '/cds/auth/facebook/callback',
+        graphBaseUrl: 'https://graph.facebook.com'
+    },
+
+    twitter: {
+        clientID:     process.env.TWITTER_ID || 'PptZXjMX5sd7XBWujWPoBjnaA',
+        clientSecret: process.env.TWITTER_SECRET || 'pKPU2InKpKMokSkT6QEc3irlT3IWp4NqztV6Ht6jzpI8qFOa8O',
+        callbackURL:  (process.env.DOMAIN || '') + '/cds/auth/twitter/callback',
+        oauthApiBaseUrl: 'https://api.twitter.com/1.1'
+    },
+
+    google: {
+        //AIzaSyB1f4dq0i8-PQznQbyHkZogC1RQWd2uv9U
+        clientID:     process.env.GOOGLE_ID || '93342246393-2d07t4ue6fbqo6s203m6430e08t3861l.apps.googleusercontent.com',
+        clientSecret: process.env.GOOGLE_SECRET || 'nhPakuJbknt3X2y98zaJP9YR',
+        callbackURL:  (process.env.DOMAIN || '') + '/cds/auth/google/callback'
+    },
+
+    iframely:{
+        //url: process.env.iframelyUrl || "http://ec2-54-148-42-246.us-west-2.compute.amazonaws.com:8061/oembed?url="
+        url: process.env.iframelyUrl || "http://localhost:8061/oembed?url="
+    },
+
+    pageSizes: {
+        home_timeline_first_PageSize: 10,
+        home_timeline_default_PageSize: 10,
+        profile_timeline: 20,
+        one_column_with_comments: 10,
+        search: 20
+    },
+
+    //clientUrl: 'http://ec2-54-148-42-246.us-west-2.compute.amazonaws.com/auth',
+    //clientUrl: 'https://i1-canvas-web-elb-12210397.us-west-2.elb.amazonaws.com/auth',
+    clientUrl: 'https://kanvz.com/auth',
+    socialPosting: {
+        enabled: true
+    },
+    canvasAdminUserhandle: 'kanvzteam',
+    //siteUrl: 'http://ec2-54-148-42-246.us-west-2.compute.amazonaws.com'
+    //siteUrl: 'https://i1-canvas-web-elb-12210397.us-west-2.elb.amazonaws.com'
+    siteUrl: 'https://kanvz.com'
+};
+
+module.exports = config;

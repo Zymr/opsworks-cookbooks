@@ -1,0 +1,46 @@
+/**
+ * Created by harsh.r on 2/4/15.
+ */
+'use strict';
+
+module.exports = {
+    hosts: [{
+        addr: '52.25.225.44',
+        port: 3000
+    }],
+    policies: {
+        timeout: 0
+    },
+    modlua: {
+        userPath: 'udf/lua/'
+    },
+
+    dbApplication           : 'cdbapplication',
+    dbContent               : 'cdbcontent',
+    authtable               : 'userauth',
+    profileTable            : 'profile',
+    userFollowersTable      : 'userfollowers',
+    userFollowingTable      : 'userfollowing',
+    galleryTable            : 'gallery',
+    canvasGalleriesTable    : 'canvasgalleries',
+    postTable               : 'post',
+    canvasTable             : 'canvas',
+    userTimelineTable       : 'usertimeline',
+    userCanvasesTable       : 'usercanvases',
+    canvasFollowersTable    : 'canvasfollowers',
+    usergalleries           : 'usergalleries',
+    embedflatTable          : 'embedflat',
+    canvasFiltersTable      : 'canvasfilters',
+    canvasActivityTable     : 'canvasactivity',
+    userActivityTable       : 'useractivity',
+    postActivityTable       : 'postactivity',
+    useridentity            : 'useridentity',
+    commentTable            : 'comment',
+    searchTable             : 'searchflat',
+    userauthTable           : 'userauth',
+    userdraft               : 'userdraft',
+    canvasfavorites         : 'canvasfavorites',
+    canvasShareTable        : 'canvasshare',
+    notificationTable       : 'notification',
+    userShareTable          : 'usershare'
+};

@@ -1,0 +1,150 @@
+(function () {
+    'use strict';
+    //var host = 'http://ec2-52-11-101-44.us-west-2.compute.amazonaws.com',
+    //var host = 'https://i2-canvas-app-1298169615.us-west-2.elb.amazonaws.com',
+    var host = 'https://api.kanvz.com',
+    //var host = 'https://ec2-52-24-166-7.us-west-2.compute.amazonaws.com',
+    	port = 443;
+    var apiHost = host +':'+port;
+    angular.module('canvasApp')
+        .constant('canvasAppConfig', {
+            kanvzHost   : host,
+            canvasAdminUserhandle   : 'kanvzteam',
+            host : apiHost,
+            auth :{
+            	baseurl : apiHost + '/cds/auth',
+            	signup : 'local',
+            	facebokSignup:'/facebook/',
+            	twitterSignup : '/twitter/',
+            	googleSignup: '/google/make/'
+            },
+            cardtype:{
+                embed:{
+                    link:"embed-link",
+                    photo:"embed-photo",
+                    video:"embed-video",
+                    audio:"embed-audio",
+                    tweet:"embed-tweet",
+                    rich:"embed-rich",
+                    product:"embed-product",
+                    document:"embed-document",
+                    presentation:"embed-presentation",
+                    fbpost: "embed-fbpost",
+                    instagrampost: "embed-instagrampost"
+                },
+                upload:{
+                    photo:"upload-photo",
+                    video:"upload-video"
+                }
+
+            },
+            nodeApi: {
+            	getUserCanvases : 'canvases',
+            	getUserFollowers : 'followers',
+            	getUserFollwings : 'following',
+            	getUserCanvasesFilter : 'owned,authored,shared',
+            	getLoggedinUserCanvases : ',ownedpvt,authoredpvt',
+            	getUserDraftsFilter: 'draftlist',
+            	getCanvasFollowedFilter : 'followed',
+            	getUserFavorited: 'favorited',
+            	getUserGalleries:'galleries',
+                getUserTimeline: 'users',
+				getCanvasPosts: 'posts',
+                getCanvasAuthors: 'authors',
+                follow : 'follow',
+				unFollow : 'unfollow',
+				favoriteCanvas: 'favorite',
+				unFavoriteCanvas: 'unfavorite',
+				addComment: 'addcomment',
+				deleteComment:'deletecomment',
+				getComments:'comments',
+				getLayoutComments: true,
+                fbPost: 'fbpost',
+                twtrPost: 'twtrpost',
+                userDraft: 'draft',  
+                saveUserDraft: 'draftSave',
+                publishCanvas:'publish',
+                canvasShare: 'share',
+                canvasSharedWith: 'sharedwith'
+            },
+            froalaOptions: {
+                key:'mcdD2B5F1A1E4F1B1B8D7D7A5E1H5E4B1bkC3mE-11oiE2A2C7bmntprbD3hgjvbh1ngbB2pA-13x==',
+                allowScript: false,
+                inlineMode: true,
+                plainPaste: true,
+                placeholder: 'Say something or paste web links',
+                blockTags: ["blockquote", "h1", "h2"],
+                minHeight: '150px',
+                height: 'auto',
+                width: '460px',
+                spellcheck: false,
+                buttons: ["bold", "italic","underline","strikeThrough", "createLink", "formatBlock", "insertUnorderedList", "insertOrderedList"]
+            },
+            messages : {
+            	success :{
+            		loginSignupSuccess : 'Welcome to Canvas',
+            		userUpdatedSuccessfull: 'User updated successfully',
+                    postCreateSuccessfull:'Post created successfully',
+                    postDeleteSuccessfull:'Post deleted successfully',
+                    canvasCreateSuccessfull:'Canvas created successfully',
+                    canvasUpdateSuccessfull:'Canvas updated successfully',
+                    canvasCreationSuccessfull:'Canvas created successfully',
+                    commentAddedSuccessfull : 'Comment added successfully',
+                    FBShareSuccess: 'Shared on your Facebook page.',
+                    TWTRShareSuccess: 'Shared on your Twitter page.',
+                    canvasDeletedSuccessfull: 'Canvas deleted successfully',
+                    photoUploadSuccessfull : 'Photo uploaded successfully',
+                    canvasInDraftMode : 'No Posts are added to this Canvas. Please add atleast one post and publish in order to make it usable',
+                    canvasSharedSuccessfull: 'Canvas shared Successfully',
+                    canvasSetAsFeatured: 'Canvas set as Featured Successfully.',
+                    canvasRemovedAsFeatured: 'Canvas removed as Featured Successfully.'
+            	},
+            	error : {
+            		passwordMismatch : 'Password doesn\'t match',
+            		errorUpdatingUser : 'Error while updating user',
+            		errorCreatingPost: 'Error while creating post',
+                    errorDeletingPost: 'Error while deleting post',
+                    errorCreatingCanvas: 'Error while creating canvas',
+                    errorUpdatingCanvas: 'Error while updating canvas',
+                    emptyUsername: 'Please enter username and password',
+            		errorGettingCanvas:'Error while getting the Canvas',
+            		errorGettingUserInfo:'Error while getting the User',
+            		errorCanvasFavorite : 'Error while favoriting canvas',
+            		errorFollowingCanvas:'Error while following Canvas',
+            		errorCreatingComment : 'Error while creating comment',
+            		errorDeletingCanvas: 'Erorr while deleting canvas',
+            		photoUploadFail: 'Error while uploading photo',
+            		reduceCanvasTitle : 'Please make your canvas title small',
+            		canvasFavorited : 'Canvas already favorited',
+            		canvasTitleEmptry:'Canvas title can not be empty',
+                    errorSharingCanvas: 'Error while sharing Canvas',
+                    errorSettingFeaturedCanvas: 'Error while setting/removing Canvas as Featured.'
+            	},
+                warning : {
+                    canvas_already_shared: 'Canvas already shared with ',
+                    canvas_not_shareble: 'Canvas is already being shared with your followers.',
+                    canvas_not_shared_with_anyone: 'Canvas is not shared with any user.',
+                    private_canvas: 'The owner has set privacy of this canvas to Private/FollowersOnly, It can\'t be shared.',
+                    select_follower: 'Please select atleast one Follower to share Canvas with.'
+                },
+                social: {
+                    warning_Twitter_len: 'message cannot be more than 140 characters as required by Twitter, click CANCEL to modify. \nclick OK to proceed (extra characters will be truncated)'
+                }
+            },
+            events :{
+            	userFollowersUpdated : 'USER_FOLLOWERS_UPDATED',
+            	userFollowingUpdated : 'USER_FOLLOWING_UPDATED',
+            	canvasFollowersUpdated : 'CANVAS_FOLLOWERS_UPDATED',
+            	canvasFollowingUpdated : 'CANVAS_FOLLOWING_UPDATED',
+            	userInformationReceived : 'LOGGEDIN_USERINFO_AVAILABLE',
+            	draftsCanvasCreated: 'DRAFTS_CANVAS_CREATED',
+            	updateUserProfileCount:'UPDATE_USER_ProfiLE_COUNT'
+            },
+            aws:{
+                cdnUrl: 'https://s3-us-west-2.amazonaws.com'
+            },
+            canvasTitle:{
+            	numberOfCharacters: 75
+            }
+        });
+})()
