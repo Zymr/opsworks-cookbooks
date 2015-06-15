@@ -76,17 +76,17 @@ directory node[:nginx][:ssl] do
   mode '0755'
 end
 
-template "#{node[:nginx][:ssl]}/nginx.crt" do
+template "#{node[:nginx][:ssl]}/kanvz.crt" do
 #cookbook_file "/etc/nginx/ssl/nginx.crt" do
-  source "nginx.crt.erb"
+  source "kanvz.crt.erb"
   owner "root"
   group "root"
   mode "0644"
 end
 
-template "#{node[:nginx][:ssl]}/nginx.pem" do
+template "#{node[:nginx][:ssl]}/kanvz.key" do
 #cookbook_file "/etc/nginx/ssl/nginx.pem" do
-  source "nginx.pem.erb"
+  source "kanvz.key.erb"
   owner "root"
   group "root"
   mode "0644"

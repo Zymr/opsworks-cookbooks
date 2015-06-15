@@ -38,12 +38,21 @@ http {
 
     index   index.html index.htm;
 
-    server {
+    <!-- server {
         listen       80;
         server_name  localhost;
         #root          /home/ubuntu/app/canvas.presentation/app;
         #root         /usr/share/nginx/html;
         root          /mnt/i1-ebs/app/canvasproject/canvas.presentation/app
+ -->
+    server {
+        listen       443 ssl;
+        ssl_certificate /etc/nginx/ssl/kanvz.crt;
+        ssl_certificate_key /etc/nginx/ssl/kanvz.key;
+        server_name  www.kanvz.com;
+        ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers         HIGH:!aNULL:!MD5;
+        root          /mnt/i1-ebs/app/canvas.presentation/app; # change this path as per reequirement
 
         #charset koi8-r;
 
