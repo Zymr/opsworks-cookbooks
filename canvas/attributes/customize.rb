@@ -2,9 +2,18 @@
 default[:opsworks][:deploy_user][:shell] = '/bin/bash'
 default[:opsworks][:deploy_user][:user] = 'root'
 default[:opsworks][:deploy_user][:group] = 'root'
+default[:opsworks][:deploy_user][:home] = '/root'
 default[:deploy] = {}
 node[:deploy].each do |application, deploy|
     default[:deploy][application][:deploy_to] = "/srv/www/"
+    default[:deploy][application][:user] = node[:opsworks][:deploy_user][:user]
+    default[:deploy][application][:group] = node[:opsworks][:deploy_user][:group]
+    default[:deploy][application][:shell] = node[:opsworks][:deploy_user][:shell]
+    default[:deploy][application][:home] = if !node[:opsworks][:deploy_user][:home].nil?
+                                               node[:opsworks][:deploy_user][:home]
+                                           else
+                                               "/root"
+                                           end
     #default[:deploy][application][:chef_provider] = node[:deploy][application][:chef_provider] ? node[:deploy][application][:chef_provider] : node[:opsworks][:deploy_chef_provider]
     #unless valid_deploy_chef_providers.include?(node[:deploy][application][:chef_provider])
     #    raise "Invalid chef_provider '#{node[:deploy][application][:chef_provider]}' for app '#{application}'. Valid providers: #{valid_deploy_chef_providers.join(', ')}."
