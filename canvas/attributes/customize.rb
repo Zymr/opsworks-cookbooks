@@ -4,7 +4,7 @@ default[:opsworks][:deploy_user][:user] = 'root'
 default[:opsworks][:deploy_user][:group] = 'root'
 default[:opsworks][:deploy_user][:home] = '/root'
 default[:opsworks][:deploy_keep_releases] = 5
-default[:opsworks][:deploy_keep_releases] = 5
+default[:opsworks][:deploy_chef_provider] = 'Timestamped'
 
 default[:deploy] = {}
 node[:deploy].each do |application, deploy|
