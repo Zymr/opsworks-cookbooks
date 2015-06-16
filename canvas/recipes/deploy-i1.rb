@@ -29,7 +29,8 @@ node[:deploy].each do |application, deploy|
     environment_variables deploy[:environment_variables]
   end
 
-  ruby_block "restart node.js application #{application}" do
+  #ruby_block "restart node.js application #{application}" do
+  ruby_block "restart node.js application canvas.services" do
     block do
       Chef::Log.info("restart node.js via: #{node[:deploy][application][:nodejs][:restart_command]}")
       Chef::Log.info(`#{node[:deploy][application][:nodejs][:restart_command]}`)
