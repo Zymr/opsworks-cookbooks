@@ -2,7 +2,7 @@ Chef::Log.info "Installing npm packages"
 
 Chef::Log.info "Installing bower"
     execute "bower-install" do
-        command "npm install bower"
+        command "npm install bower -g"
         action :run
     end
 
