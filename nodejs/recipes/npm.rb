@@ -12,6 +12,12 @@ Chef::Log.info "Installing Grunt"
         action :run
     end
 
+Chef::Log.info "Installing pm2"
+    execute "pm2-install" do
+        command "npm install pm2 -g"
+        action :run
+    end
+
 Chef::Log.info "Installing forever"
     execute "forever-install" do
         command "npm install forever -g"
