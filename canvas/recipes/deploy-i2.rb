@@ -34,10 +34,26 @@ node[:deploy].each do |application, deploy|
       cwd "#{deploy[:deploy_to]}/current/iframely"
   end
 
+  execute "pm2 start in iframely" do
+      command "pm2 start server.js"
+      cwd "#{deploy[:deploy_to]}/current/iframely"
+  end
+
   execute "npm_install on canvas.services" do
       command "npm install"
       cwd "#{deploy[:deploy_to]}/current/canvas.services"
   end
+
+  execute "npm_install Zmq on canvas.services" do
+      command "npm install zmq"
+      cwd "#{deploy[:deploy_to]}/current/canvas.services"
+  end
+
+  execute "pm2 start in canvas.services" do
+      command "pm2 start server.js"
+      cwd "#{deploy[:deploy_to]}/current/canvas.services"
+  end
+
   #ruby_block "restart node.js application #{application}" do
   #  block do
   #    Chef::Log.info("restart node.js via: #{node[:deploy][application][:nodejs][:restart_command]}")
