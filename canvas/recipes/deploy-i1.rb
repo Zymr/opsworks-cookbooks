@@ -29,6 +29,12 @@ node[:deploy].each do |application, deploy|
     environment_variables deploy[:environment_variables]
   end
 
+  execute "bower_install" do
+      command "bower install --allow-root"
+      cwd "#{deploy[:deploy_to]}/current/canvas.presentation/app"
+      #action "run"
+      #user "root"
+  end
   #ruby_block "restart node.js application #{application}" do
   #  block do
   #    Chef::Log.info("restart node.js via: #{node[:deploy][application][:nodejs][:restart_command]}")
@@ -36,15 +42,15 @@ node[:deploy].each do |application, deploy|
   #    $? == 0
   #  end
   #end
-  ruby_block "Run bower install" do
-      block do
-          Chef::Log.info("running bower install in")
-          execute "bower_install" do
-              command "bower install --allow-root"
-              cwd "#{deploy[:deploy_to]}/current/canvas.presentation/app"
+  #ruby_block "Run bower install" do
+  #    block do
+  #        Chef::Log.info("running bower install in")
+  #        execute "bower_install" do
+  #            command "bower install --allow-root"
+  #            cwd "#{deploy[:deploy_to]}/current/canvas.presentation/app"
               #action "run"
               #user "root"
-          end
-      end
-  end
+  #        end
+  #    end
+  #end
 end
