@@ -8,7 +8,7 @@ default[:opsworks][:deploy_chef_provider] = 'Timestamped'
 
 default[:deploy] = {}
 node[:deploy].each do |application, deploy|
-    default[:deploy][application][:deploy_to] = "/srv/www/"
+    default[:deploy][application][:deploy_to] = "/mnt/canvas/#{application}"
     default[:deploy][application][:user] = node[:opsworks][:deploy_user][:user]
     default[:deploy][application][:group] = node[:opsworks][:deploy_user][:group]
     default[:deploy][application][:shell] = node[:opsworks][:deploy_user][:shell]
