@@ -4,9 +4,9 @@ upstream socket_nodes {
 }
 
 server {
-    listen       443 ssl;
-    ssl_certificate /etc/nginx/ssl/kanvz.crt;
-    ssl_certificate_key /etc/nginx/ssl/kanvz.key;
+    listen       80 default_server;
+    #ssl_certificate /etc/nginx/ssl/kanvz.crt;
+    #ssl_certificate_key /etc/nginx/ssl/kanvz.key;
     server_name  localhost;
 
     #charset koi8-r;
