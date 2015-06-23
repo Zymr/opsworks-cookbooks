@@ -35,7 +35,6 @@ var config = {
     },
 
     iframely:{
-        //url: process.env.iframelyUrl || "http://ec2-54-148-42-246.us-west-2.compute.amazonaws.com:8061/oembed?url="
         url: process.env.iframelyUrl || "http://localhost:8061/oembed?url="
     },
 
@@ -49,12 +48,12 @@ var config = {
 
     authUrl: 'auth',
     connectUrl: 'connectConfirm',
-    clientUrl: 'https://kanvz.com/auth',
+    clientUrl: 'http://www.testkanvz.com/auth',
     socialPosting: {
         enabled: true
     },
     canvasAdminUserhandle: 'kanvzteam',
-    siteUrl: 'https://kanvz.com'
+    siteUrl: 'http://www.testkanvz.com'
 };
 
 module.exports = config;
