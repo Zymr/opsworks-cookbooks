@@ -45,9 +45,11 @@ network {
 	}
 }
 
+
+# In the Test setup the instance type assummed is t2.medium
 namespace cdbapplication {
     replication-factor 1
-    memory-size 20G
+    memory-size 3G
     default-ttl 0  # 30 days, use 0 to never expire/evict.
 
     storage-engine device {
@@ -58,7 +60,7 @@ namespace cdbapplication {
 
 namespace cdbcontent {
     replication-factor 1
-    memory-size 8G
+    memory-size 1G
     default-ttl 0
 
     storage-engine device {
