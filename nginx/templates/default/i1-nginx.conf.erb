@@ -1,7 +1,7 @@
 user  ubuntu;
 worker_processes  1;
 
-error_log  /var/log/nginx/error.log;
+error_log  /var/log/nginx/error.log  crti;
 #error_log  /var/log/nginx/error.log  notice;
 #error_log  /var/log/nginx/error.log  info;
 
@@ -21,12 +21,13 @@ http {
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
 
-    access_log  /var/log/nginx/access.log  main;
+    #access_log  /var/log/nginx/access.log  main;
+    access_log  off;
 
     sendfile        on;
-    #tcp_nopush     on;
+    tcp_nopush      on;
+    tcp_nodelay     on;
 
-    #keepalive_timeout  0;
     keepalive_timeout  65;
 
     #gzip  on;
@@ -42,7 +43,7 @@ http {
         listen       80 default_server;
         #ssl_certificate /etc/nginx/ssl/kanvz.crt;
         #ssl_certificate_key /etc/nginx/ssl/kanvz.key;
-        server_name  http://www.testkanvz.com;
+        server_name  .testkanvz.com;
         #ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
         #ssl_ciphers         HIGH:!aNULL:!MD5;
         root          /mnt/canvas/app/current/canvas.presentation/app; # change this path as per reequirement

@@ -1,7 +1,7 @@
 user <%= node[:nginx][:user] %>;
 worker_processes  <%= node[:nginx][:worker_processes] %>;
 
-error_log  <%= node[:nginx][:log_dir] %>/error.log;
+error_log  <%= node[:nginx][:log_dir] %>/error.log crit;
 pid        <%= node[:nginx][:pid_file] %>;
 
 events {
@@ -16,7 +16,8 @@ http {
   log_format <%= name %> <%= format %>;
   <% end %>
 
-  access_log	<%= node[:nginx][:log_dir] %>/access.log;
+  #access_log	<%= node[:nginx][:log_dir] %>/access.log;
+  access_log    off;
 
   sendfile on;
   tcp_nopush on;

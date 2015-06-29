@@ -61,7 +61,7 @@ default[:nginx][:gzip_types] = ["application/x-javascript",
 default[:nginx][:keepalive] = "on"
 default[:nginx][:keepalive_timeout] = 65
 
-default[:nginx][:worker_processes] = 10
+default[:nginx][:worker_processes] = 1
 default[:nginx][:worker_connections] = 1024
 default[:nginx][:server_names_hash_bucket_size] = 64
 
