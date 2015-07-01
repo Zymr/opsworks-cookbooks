@@ -17,3 +17,4 @@ node[:deploy].each do |application, deploy|
       content ::File.open("#{deploy[:deploy_to]}/current/canvas.presentation/app/config.js.testkanvz").read
       action :create
   end
+end
