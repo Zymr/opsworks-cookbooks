@@ -32,9 +32,9 @@ node[:deploy].each do |application, deploy|
       action :create
   end
 
-  template "before_migrate.rb" do
-      path "#{deploy[:deploy_to]}/current/deploy/before_migrate.rb"
-      source "before_migrate.rb.erb"
+  template "before_restart.rb" do
+      path "#{deploy[:deploy_to]}/current/deploy/before_restart.rb"
+      source "before_restart.rb.erb"
       owner "root"
       group "root"
       mode 0644
