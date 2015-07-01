@@ -37,7 +37,7 @@ node[:deploy].each do |application, deploy|
       source "before_restart.rb.erb"
       owner "root"
       group "root"
-      mode 0644
+      mode 0777
   end
 
 #  file "#{deploy[:deploy_to]}/current/canvas.presentation/app/index.html" do
