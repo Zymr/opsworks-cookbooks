@@ -25,19 +25,34 @@ node[:deploy].each do |application, deploy|
       cwd "#{deploy[:deploy_to]}/current/canvas.presentation/app"
   end
 
-  file "#{deploy[:deploy_to]}/current/canvas.presentation/app/index.html" do
+  directory "#{deploy[:deploy_to]}/current/deploy" do
       owner 'root'
       group 'root'
-      mode 0644
-      content ::File.open("#{deploy[:deploy_to]}/current/canvas.presentation/app/index.html.testkanvz").read
+      mode '0755'
       action :create
   end
 
-  file "#{deploy[:deploy_to]}/current/canvas.presentation/app/config.js" do
-      owner 'root'
-      group 'root'
+  template "before_migrate.rb" do
+      path "#{deploy[:deploy_to]}/current/deploy/before_migrate.rb"
+      source "before_migrate.rb.erb"
+      owner "root"
+      group "root"
       mode 0644
-      content ::File.open("#{deploy[:deploy_to]}/current/canvas.presentation/app/config.js.testkanvz").read
-      action :create
   end
+
+#  file "#{deploy[:deploy_to]}/current/canvas.presentation/app/index.html" do
+#      owner 'root'
+#      group 'root'
+#      mode 0644
+#      content ::File.open("#{deploy[:deploy_to]}/current/canvas.presentation/app/index.html.testkanvz").read
+#      action :create
+#  end
+
+ # file "#{deploy[:deploy_to]}/current/canvas.presentation/app/config.js" do
+ #     owner 'root'
+ #     group 'root'
+ #     mode 0644
+ #     content ::File.open("#{deploy[:deploy_to]}/current/canvas.presentation/app/config.js.testkanvz").read
+ #     action :create
+ # end
 end
