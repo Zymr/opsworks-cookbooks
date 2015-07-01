@@ -15,19 +15,18 @@
 #  mode 0644
 #end
 
-file "#{node[:canvasweb][:dir]}/index.html" do
+file "#{deploy[:deploy_to]}/current/canvas.presentation/app/index.html" do
     owner 'root'
     group 'root'
     mode 0644
-    content ::File.open("#{node[:canvasweb][:dir]}/index.html.testkanvz").read
+    content ::File.open("#{deploy[:deploy_to]}/current/canvas.presentation/app/index.html.testkanvz").read
     action :create
 end
 
-file "#{node[:canvasweb][:dir]}/config.js" do
+file "#{deploy[:deploy_to]}/current/canvas.presentation/app/config.js" do
     owner 'root'
     group 'root'
     mode 0644
-    content ::File.open("#{node[:canvasweb][:dir]}/config.js.testkanvz").read
+    content ::File.open("#{deploy[:deploy_to]}/current/canvas.presentation/app/config.js.testkanvz").read
     action :create
 end
-
