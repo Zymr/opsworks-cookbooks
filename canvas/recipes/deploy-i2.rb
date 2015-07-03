@@ -30,7 +30,7 @@ node[:deploy].each do |application, deploy|
   end
 
   execute "pm2 start in iframely" do
-      command "pm2 start server.js --name \"iframely\" -i 0 --watch"
+      command "pm2 start server.js --name \"iframely\" -i 0"
       cwd "#{deploy[:deploy_to]}/current/iframely"
   end
 
@@ -39,29 +39,8 @@ node[:deploy].each do |application, deploy|
       cwd "#{deploy[:deploy_to]}/current/canvas.services"
   end
 
-  #execute "npm_install Zmq on canvas.services" do
-  #    command "npm install zmq"
-  #    cwd "#{deploy[:deploy_to]}/current/canvas.services"
-  #end
-
-  file "#{deploy[:deploy_to]}/current/canvas.services/modules/aerospike/aerospike_config.js" do
-      owner 'root'
-      group 'root'
-      mode 0644
-      content ::File.open("#{deploy[:deploy_to]}/current/canvas.services/modules/aerospike/aerospike_config.js.testkanvz").read
-      action :create
-  end
-
-  file "#{deploy[:deploy_to]}/current/canvas.services/config/config.js" do
-      owner 'root'
-      group 'root'
-      mode 0644
-      content ::File.open("#{deploy[:deploy_to]}/current/canvas.services/config/config.js.testkanvz").read
-      action :create
-  end
-
   execute "pm2 start in canvas.services" do
-      command "pm2 start server.js --name \"services\" -i 0 --watch"
+      command "pm2 start server.js --name \"services\" -i 0"
       cwd "#{deploy[:deploy_to]}/current/canvas.services"
   end
 
