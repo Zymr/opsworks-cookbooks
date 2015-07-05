@@ -40,7 +40,7 @@ node[:deploy].each do |application, deploy|
   end
 
   execute "pm2 start in canvas.services" do
-      command "NODE_ENV=pm2 start server.js --name \"services\" -i 0"
+      command "NODE_ENV=prod pm2 start server.js --name \"services\" -i 0"
       cwd "#{deploy[:deploy_to]}/current/canvas.services"
   end
 
