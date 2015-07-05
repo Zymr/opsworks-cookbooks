@@ -25,4 +25,14 @@ node[:deploy].each do |application, deploy|
       cwd "#{deploy[:deploy_to]}/current/canvas.presentation/app"
   end
 
+  execute "npm_install" do
+      command "npm install"
+      cwd "#{deploy[:deploy_to]}/current/canvas.presentation"
+  end
+
+  execute "grunt_build" do
+      command "grunt build:prod"
+      cwd "#{deploy[:deploy_to]}/current/canvas.presentation"
+  end
+
 end
