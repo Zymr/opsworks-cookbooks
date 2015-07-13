@@ -21,7 +21,7 @@ node[:deploy].each do |application, deploy|
   end
 
   execute "Stop Node processes" do
-      command "pm2 list || pm2 delete all || pm2 kill"
+      command "pm2 list && pm2 delete all || pm2 kill"
   end
 
   execute "npm_install on iframely" do
