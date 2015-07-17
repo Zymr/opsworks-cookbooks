@@ -31,7 +31,7 @@ node[:deploy].each do |application, deploy|
   end
 
   execute "grunt_build" do
-      command "grunt build:prod"
+      command "grunt build:testkanvz"
       cwd "#{deploy[:deploy_to]}/current/canvas.presentation"
   end
 
