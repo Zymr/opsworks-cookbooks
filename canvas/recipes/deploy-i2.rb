@@ -29,18 +29,18 @@ node[:deploy].each do |application, deploy|
       cwd "#{deploy[:deploy_to]}/current/iframely"
   end
 
-  execute "pm2 start in iframely" do
-      command "pm2 start server.js --name \"iframely\" -i 0"
-      cwd "#{deploy[:deploy_to]}/current/iframely"
-  end
-
   execute "npm_install on canvas.services" do
       command "npm install"
       cwd "#{deploy[:deploy_to]}/current/canvas.services"
   end
 
+  execute "pm2 start in iframely" do
+      command "pm2 start server.js --name \"iframely\" -i 0"
+      cwd "#{deploy[:deploy_to]}/current/iframely"
+  end
+
   execute "pm2 start in canvas.services" do
-      command "NODE_ENV=testkanvz pm2 start server.js --name \"services\" -i 0"
+      command "NODE_ENV=sslkanvz pm2 start server.js --name \"services\" -i 0"
       cwd "#{deploy[:deploy_to]}/current/canvas.services"
   end
 
